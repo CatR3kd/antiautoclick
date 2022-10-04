@@ -32,3 +32,6 @@ Detects repetitive and robotic clicking. (Ex. clicking exactly once every 10ms)
 Detects really fast clicking.
 - enabled: Determines whether it is active. Default true
 - maximumAvgPerSecong: Determines the maximum average clicks per second without detection. Default 40.
+
+## Punishment
+By default the porgram simply refreshes the page when it detects autoclicking to change this, swap all 3 instances of `window.location.reload();` with your prefered punishment.
