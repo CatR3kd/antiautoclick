@@ -11,7 +11,7 @@ document.onclick = function(event) {
     },
     detectFastClicking: {
       enabled: true,
-      maximumAvgPerSecond: 0
+      maximumAvgPerSecond: 40
     }
   }
 
