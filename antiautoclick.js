@@ -1,21 +1,20 @@
-(() => {
+function antiautoclick(userPunishment, userOptions){
   var clickTimes = [];
+  const options  = {
+    clicksToSave: userOptions.clicksToSave || 40,
+    detectNonhumanClick: userOptions.detectNonhumanClick ||  true,
+    detectClickInterval: {
+      enabled: userOptions.detectClickInterval.enabled || true,
+      margin: userOptions.detectClickInterval.userOptions || 10
+    },
+    detectFastClicking: {
+      enabled: userOptions.detectFastClicking.enabled || true,
+      maximumAvgPerSecond: userOptions.detectFastClicking.maximumAvgPerSecond || 40
+    }
+  }
+  const punishment = userPunishment || (window.location.reload());
 
   document.onclick = function(event) {
-    // Options
-    const options = {
-      clicksToSave: 40,
-      detectNonhumanClick: true,
-      detectClickInterval: {
-        enabled: true,
-        margin: 10
-      },
-      detectFastClicking: {
-        enabled: true,
-        maximumAvgPerSecond: 40
-      }
-    }
-
     // Save clicks
     if(options.clicksToSave > 0){
       clickTimes.push(new Date());
@@ -23,7 +22,7 @@
     }
 
     // Detect nonhuman clicking
-    if((options.detectNonhumanClick == true) && (event.isTrusted == false)) window.location.reload();
+    if((options.detectNonhumanClick == true) && (event.isTrusted == false)) punishment.call();
 
     // Detect click interval
     if((options.detectClickInterval.enabled == true) && (clickTimes.length == options.clicksToSave)){
@@ -36,7 +35,7 @@
       }
 
       if(maximumDifference < options.detectClickInterval.margin){
-        window.location.reload();
+        punishment.call();
       }
 
     }
@@ -46,7 +45,7 @@
       const secondsPassed = (clickTimes[clickTimes.length - 1] - clickTimes[0]) * 1000;
       const avgPerSecond = clickTimes.length / secondsPassed;
 
-      if(avgPerSecond > options.detectFastClicking.maximumAvgPerSecond) window.location.reload();
+      if(avgPerSecond > options.detectFastClicking.maximumAvgPerSecond) punishment.call();
     }
   };
-})()
+}
