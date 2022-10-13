@@ -1,5 +1,16 @@
 # antiautoclick
 Small JS script for detecting autoclicking in the client
+Usage is as follows:
+```Javascript
+const detector = new antiautoclick(punishment, options);
+```
+
+## Punishment
+
+A function do run when detected, default is:
+```Javascript
+window.location.reload();
+```
 
 ## Options:
 ```Javascript
