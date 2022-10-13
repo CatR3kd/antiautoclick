@@ -1,18 +1,5 @@
-function antiautoclick(userPunishment, userOptions){
+function antiautoclick(punishment, options){
   var clickTimes = [];
-  const options  = {
-    clicksToSave: userOptions.clicksToSave || 40,
-    detectNonhumanClick: userOptions.detectNonhumanClick ||  true,
-    detectClickInterval: {
-      enabled: userOptions.detectClickInterval.enabled || true,
-      margin: userOptions.detectClickInterval.userOptions || 10
-    },
-    detectFastClicking: {
-      enabled: userOptions.detectFastClicking.enabled || true,
-      maximumAvgPerSecond: userOptions.detectFastClicking.maximumAvgPerSecond || 40
-    }
-  }
-  const punishment = userPunishment || (window.location.reload());
 
   document.onclick = function(event) {
     // Save clicks
