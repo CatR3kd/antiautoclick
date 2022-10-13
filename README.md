@@ -1,13 +1,17 @@
 # antiautoclick
-Small JS script for detecting autoclicking in the client
-Usage is as follows:
+Small JS script for detecting autoclicking in the client.
+Include 
+```HTML
+<script src="https://unpkg.com/antiautoclick@1.0.6/antiautoclick.js"></script>
+```
+in your HTML, JS usage is as follows:
 ```Javascript
 const detector = new antiautoclick(punishment, options);
 ```
 
 ## Punishment
 
-A function do run when detected, default is:
+A function do run when detected, recommended is:
 ```Javascript
 window.location.reload();
 ```
@@ -29,20 +33,17 @@ const options = {
 ```
 
 #### clicksToSave:
-How many clicks the program keeps track of. Default 40, but you can increase it to improve accuracy at the cost of some RAM.
+How many clicks the program keeps track of. Recommended 40, but you can increase it to improve accuracy at the cost of some RAM.
 
 #### detectNonhumanClick:
-Determines whether `element.click()` is detected. Default true.
+Determines whether `element.click()` is detected. Recommended true.
 
 #### detectClickInterval:
 Detects repetitive and robotic clicking. (Ex. clicking exactly once every 10ms)
-- enabled: Determines whether it is active. Default true.
-- margin: Determines the maximum average difference between click timing to detect. Default 10ms.
+- enabled: Determines whether it is active. Recommended true.
+- margin: Determines the maximum average difference between click timing to detect. Recommended 10ms.
 
 #### detectFastClicking
 Detects really fast clicking.
-- enabled: Determines whether it is active. Default true
-- maximumAvgPerSecong: Determines the maximum average clicks per second without detection. Default 40.
-
-## Punishment
-By default the porgram simply refreshes the page when it detects autoclicking to change this, swap all 3 instances of `window.location.reload();` with your prefered punishment.
+- enabled: Determines whether it is active. Recommended true
+- maximumAvgPerSecong: Determines the maximum average clicks per second without detection. Recommended 40.
