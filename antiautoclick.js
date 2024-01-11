@@ -9,10 +9,10 @@ function antiautoclick(punishment, options){
     }
 
     // Detect nonhuman clicking
-    if((options.detectNonhumanClick == true) && (event.isTrusted == false)) punishment.call();
-
-    // Detect click interval
-    if((options.detectClickInterval.enabled == true) && (clickTimes.length == options.clicksToSave)){
+    if((options.detectNonhumanClick == true) && (event.isTrusted == false)){
+      punishment.call();
+    } else if((options.detectClickInterval.enabled == true) && (clickTimes.length == options.clicksToSave)){
+      // Detect click interval
       let maximumDifference = 0;
       for(let i in clickTimes){
         if(i > 1){
@@ -25,10 +25,8 @@ function antiautoclick(punishment, options){
         punishment.call();
       }
 
-    }
-
-    // Detect fast clicking
-    if((options.detectFastClicking.enabled == true) && (clickTimes.length > options.clicksToSave)){
+    } else if((options.detectFastClicking.enabled == true) && (clickTimes.length > options.clicksToSave)){
+      // Detect fast clicking
       const secondsPassed = (clickTimes[clickTimes.length - 1] - clickTimes[0]) * 1000;
       const avgPerSecond = clickTimes.length / secondsPassed;
 
