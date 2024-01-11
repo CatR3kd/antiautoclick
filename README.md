@@ -11,7 +11,7 @@ const detector = new antiautoclick(punishment, options);
 
 ## Punishment
 
-A function do run when detected, recommended is:
+A function to run when autoclicking is detected, recommended is:
 ```Javascript
 window.location.reload();
 ```
